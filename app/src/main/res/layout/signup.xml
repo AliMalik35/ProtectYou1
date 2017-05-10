@@ -3,13 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
+        android:padding="8dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/create_account_title"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/editTextUserName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="User Name">
+        android:layout_margin="10dp"
+        android:hint="@string/username">
 
         <requestFocus />
     </EditText>
@@ -18,14 +38,16 @@
         android:id="@+id/editTextPassword"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:hint="Password"
+        android:layout_margin="10dp"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/editTextConfirmPassword"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:hint="Confirm Password"
+        android:layout_margin="10dp"
+        android:hint="@string/confirm_password"
         android:inputType="textPassword" />
 
     <Button
@@ -33,6 +55,6 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="60dp"
-        android:text="Create Account" />
+        android:text="@string/create_account" />
 
 </LinearLayout>

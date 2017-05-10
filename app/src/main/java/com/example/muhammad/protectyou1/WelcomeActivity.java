@@ -13,17 +13,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class HomeActivity extends Activity {
+/**
+ * Allows user to go to register page or invoke login dialog
+ */
+public class WelcomeActivity extends Activity {
     Button btnSignIn, btnSignUp;
-    LoginDataBaseAdapter loginDataBaseAdapter;
+    AccountDataBaseAdapter accountDataBaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.welcome);
 
-        loginDataBaseAdapter = new LoginDataBaseAdapter(this);
-        loginDataBaseAdapter = loginDataBaseAdapter.open();
+        accountDataBaseAdapter = new AccountDataBaseAdapter(this);
+        accountDataBaseAdapter = accountDataBaseAdapter.open();
 
         btnSignIn = (Button) findViewById(R.id.buttonSignIN);
         btnSignUp = (Button) findViewById(R.id.buttonSignUP);
@@ -40,9 +43,10 @@ public class HomeActivity extends Activity {
     }
 
     public void signIn(View V) {
-        final Dialog dialog = new Dialog(HomeActivity.this);
+        final Dialog dialog = new Dialog(WelcomeActivity.this);
         dialog.setContentView(R.layout.login);
         dialog.setTitle("Login");
+
         final EditText editTextUserName = (EditText) dialog
                 .findViewById(R.id.editTextUserNameToLogin);
         final EditText editTextPassword = (EditText) dialog
@@ -56,17 +60,20 @@ public class HomeActivity extends Activity {
 
                 String userName = editTextUserName.getText().toString();
                 String password = editTextPassword.getText().toString();
-                String storedPassword = loginDataBaseAdapter
+
+                String storedPassword = accountDataBaseAdapter
                         .getSinlgeEntry(userName);
+
                 if (password.equals(storedPassword)) {
-                    Toast.makeText(HomeActivity.this,
+                    Toast.makeText(WelcomeActivity.this,
                             "Congrats: Login Successfull", Toast.LENGTH_LONG)
                             .show();
                     dialog.dismiss();
-                   /* Intent main = new Intent(HomeActivity.this, Welcome.class);
-                    startActivity(main); */
+
+                    //Intent main = new Intent(WelcomeActivity.this, Welcome.class);
+                    //startActivity(main);
                 } else {
-                    Toast.makeText(HomeActivity.this,
+                    Toast.makeText(WelcomeActivity.this,
                             "User Name or Password does not match",
                             Toast.LENGTH_LONG).show();
                 }
@@ -79,6 +86,6 @@ public class HomeActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        loginDataBaseAdapter.close();
+        accountDataBaseAdapter.close();
     }
 }

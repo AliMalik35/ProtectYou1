@@ -10,7 +10,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class LoginDataBaseAdapter {
+/**
+ * Used to obtain user account information
+ */
+
+public class AccountDataBaseAdapter {
     static final String DATABASE_NAME = "login.db";
     static final int DATABASE_VERSION = 1;
     public static final int NAME_COLUMN = 1;
@@ -21,13 +25,13 @@ public class LoginDataBaseAdapter {
     private final Context context;
     private DataBaseHelper dbHelper;
 
-    public LoginDataBaseAdapter(Context _context) {
+    public AccountDataBaseAdapter(Context _context) {
         context = _context;
         dbHelper = new DataBaseHelper(context, DATABASE_NAME, null,
                 DATABASE_VERSION);
     }
 
-    public LoginDataBaseAdapter open() throws SQLException {
+    public AccountDataBaseAdapter open() throws SQLException {
         db = dbHelper.getWritableDatabase();
         return this;
     }
@@ -51,9 +55,8 @@ public class LoginDataBaseAdapter {
     public int deleteEntry(String UserName) {
 
         String where = "USERNAME=?";
-        int numberOFEntriesDeleted = db.delete("LOGIN", where,
+        return db.delete("LOGIN", where,
                 new String[] { UserName });
-        return numberOFEntriesDeleted;
     }
 
     public String getSinlgeEntry(String userName) {
