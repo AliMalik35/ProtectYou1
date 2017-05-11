@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1;
+package com.example.muhammad.protectyou1.Model;
 
 /**
  * Created by Muhammad on 18/04/2017.
@@ -18,7 +18,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase _db) {
-        _db.execSQL(AccountDataBaseAdapter.DATABASE_CREATE);
+        _db.execSQL(AccountDataBaseAdapter.DATABASE_USERS);
+        _db.execSQL(AccountDataBaseAdapter.DATABASE_CONTACTS);
+        _db.execSQL(AccountDataBaseAdapter.DATABASE_CURRENT_USER);
 
     }
 

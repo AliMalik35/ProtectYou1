@@ -13,12 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+
 /**
- * Allows user to go to register page or invoke login dialog
+ * Allows user to go to sign up activity or invoke login dialog
  */
 public class WelcomeActivity extends Activity {
-    Button btnSignIn, btnSignUp;
-    AccountDataBaseAdapter accountDataBaseAdapter;
+    private Button signUpBtn;
+    private AccountDataBaseAdapter accountDataBaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +30,12 @@ public class WelcomeActivity extends Activity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        btnSignIn = (Button) findViewById(R.id.buttonSignIN);
-        btnSignUp = (Button) findViewById(R.id.buttonSignUP);
+        signUpBtn = (Button) findViewById(R.id.signUpBtn);
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                Intent intentSignUP = new Intent(getApplicationContext(),
-                        SignUPActivity.class);
-                startActivity(intentSignUP);
+                Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -47,34 +45,41 @@ public class WelcomeActivity extends Activity {
         dialog.setContentView(R.layout.login);
         dialog.setTitle("Login");
 
-        final EditText editTextUserName = (EditText) dialog
-                .findViewById(R.id.editTextUserNameToLogin);
-        final EditText editTextPassword = (EditText) dialog
-                .findViewById(R.id.editTextPasswordToLogin);
+        final EditText usernameEditText = (EditText) dialog.findViewById(R.id.usernameEditText);
+        final EditText passwordEditText = (EditText) dialog.findViewById(R.id.passwordEditText);
 
-        Button btnSignIn = (Button) dialog.findViewById(R.id.buttonSignIn);
+        Button signInBtn = (Button) dialog.findViewById(R.id.signInBtn);
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        signInBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                String userName = editTextUserName.getText().toString();
-                String password = editTextPassword.getText().toString();
+                String username = usernameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
 
                 String storedPassword = accountDataBaseAdapter
-                        .getSinlgeEntry(userName);
+                        .getUserPasswordByUsername(username);
 
                 if (password.equals(storedPassword)) {
                     Toast.makeText(WelcomeActivity.this,
-                            "Congrats: Login Successfull", Toast.LENGTH_LONG)
+                            "Congrats: Login Successful!", Toast.LENGTH_LONG)
                             .show();
                     dialog.dismiss();
 
-                    //Intent main = new Intent(WelcomeActivity.this, Welcome.class);
-                    //startActivity(main);
+                    // used to track who current user of application is
+                    accountDataBaseAdapter.insertCurrentUser(username);
+
+                    // TODO if user logs out, call clearCurrentUser()
+                    // TODO when app is destroyed, call clearCurrentUser()
+                    // TODO check on each activity if there is a value in current_user table, if there is not a value,
+                    // TODO contd. this signifies that the user is not 'logged in', send user to WelcomeActivity to sign in
+
+
+                    Intent i = new Intent(WelcomeActivity.this, HomeActivity.class);
+                    startActivity(i);
                 } else {
                     Toast.makeText(WelcomeActivity.this,
-                            "User Name or Password does not match",
+                            "User Name or Password does not match!",
                             Toast.LENGTH_LONG).show();
                 }
             }

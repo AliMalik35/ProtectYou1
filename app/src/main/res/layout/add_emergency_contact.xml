@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    android:weightSum="1"
+    tools:context="com.example.muhammad.protectyou1.HomeActivity">
+
+
+    <TextView
+        android:id="@+id/addEmergencyContactTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="0.06"
+        android:gravity="center"
+        android:text="@string/add_contact"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+
+    <EditText
+        android:id="@+id/contactNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addEmergencyContactTextView"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/contactRelationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Relation"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/contactNameTextView"
+        android:layout_alignLeft="@+id/contactNameTextView"
+        android:layout_alignStart="@+id/contactNameTextView" />
+
+    <EditText
+        android:id="@+id/contactPhoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:layout_below="@+id/contactRelationTextView"
+        android:layout_alignLeft="@+id/contactRelationTextView"
+        android:layout_alignStart="@+id/contactRelationTextView" />
+
+    <Button
+        android:id="@+id/createContactBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactPhoneTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="@string/create_contact" />
+
+
+    <Button
+        android:id="@+id/cancelBtn"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:layout_below="@+id/createContactBtn"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

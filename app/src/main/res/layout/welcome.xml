@@ -8,15 +8,22 @@
     android:orientation="vertical"
     android:baselineAligned="false">
 
-    <Button
-        android:id="@+id/buttonSignIN"
-        android:layout_width="fill_parent"
+    <ImageView
+        android:id="@+id/welcomeImageView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in"
-        android:onClick="signIn" />
+        app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/buttonSignUP"
+        android:id="@+id/signInBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="signIn"
+        android:text="@string/sign_in" />
+
+    <Button
+        android:id="@+id/signUpBtn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"/>
