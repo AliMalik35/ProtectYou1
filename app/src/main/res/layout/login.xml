@@ -5,27 +5,29 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editTextUserNameToLogin"
+        android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
-        android:hint="User Name" >
+        android:hint="@string/username">
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editTextPasswordToLogin"
+        android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/buttonSignIn"
+        android:id="@+id/signInBtn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In" />
+        android:text="@string/sign_in" />
 
 </LinearLayout>
