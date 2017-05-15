@@ -21,7 +21,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         _db.execSQL(AccountDataBaseAdapter.DATABASE_USERS);
         _db.execSQL(AccountDataBaseAdapter.DATABASE_CONTACTS);
         _db.execSQL(AccountDataBaseAdapter.DATABASE_CURRENT_USER);
-
+        _db.execSQL(AccountDataBaseAdapter.DATABASE_MESSAGES);
     }
 
     @Override

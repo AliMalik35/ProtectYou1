@@ -7,11 +7,10 @@
     android:orientation="vertical"
     android:baselineAligned="false"
     android:weightSum="1"
-    tools:context="com.example.muhammad.protectyou1.ProtectionHomeActivity">
-
+    tools:context="com.example.muhammad.protectyou1.EditEmergencyMessageActivity">
 
     <TextView
-        android:id="@+id/addEmergencyContactTextView"
+        android:id="@+id/editEmergencyMessageTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -20,54 +19,30 @@
         android:layout_marginBottom="30dp"
         android:layout_weight="0.06"
         android:gravity="center"
-        android:text="@string/add_contact"
+        android:text="@string/edit_message"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
     <EditText
-        android:id="@+id/contactNameTextView"
+        android:id="@+id/emergencyMessageEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addEmergencyContactTextView"
+        android:layout_below="@+id/editEmergencyMessageTextView"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/contactRelationTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="Relation"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/contactNameTextView"
-        android:layout_alignLeft="@+id/contactNameTextView"
-        android:layout_alignStart="@+id/contactNameTextView" />
-
-    <EditText
-        android:id="@+id/contactPhoneTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:layout_below="@+id/contactRelationTextView"
-        android:layout_alignLeft="@+id/contactRelationTextView"
-        android:layout_alignStart="@+id/contactRelationTextView" />
+        android:hint="Emergency Message"
+        android:inputType="textMultiLine" />
 
     <Button
-        android:id="@+id/createContactBtn"
+        android:id="@+id/saveMessageBtn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/contactPhoneTextView"
+        android:layout_below="@+id/emergencyMessageEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
-        android:text="@string/create_contact" />
+        android:text="@string/save_message" />
 
 
     <Button
@@ -76,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
-        android:layout_below="@+id/createContactBtn"
+        android:layout_below="@+id/saveMessageBtn"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

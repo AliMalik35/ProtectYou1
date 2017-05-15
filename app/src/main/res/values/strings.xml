@@ -17,5 +17,8 @@
     <string name="emergency_contacts">Emergency Contacts</string>
     <string name="cancel">Cancel</string>
     <string name="back">Back</string>
-
+    <string name="protect_yourself">Protect Yourself</string>
+    <string name="protect_your_data">Protect Your Data</string>
+    <string name="edit_message">Edit Emergency SMS</string>
+    <string name="save_message">Save Message</string>
 </resources>
