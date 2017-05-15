@@ -1,8 +1,8 @@
 package com.example.muhammad.protectyou1.EmergencyContacts;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
-import com.example.muhammad.protectyou1.HomeActivity;
+import com.example.muhammad.protectyou1.ProtectionHomeActivity;
 import com.example.muhammad.protectyou1.R;
 
 import java.util.List;
@@ -58,7 +58,7 @@ public class ViewEmergencyContactsActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ViewEmergencyContactsActivity.this, HomeActivity.class);
+                Intent i = new Intent(ViewEmergencyContactsActivity.this, ProtectionHomeActivity.class);
                 startActivity(i);
             }
         });

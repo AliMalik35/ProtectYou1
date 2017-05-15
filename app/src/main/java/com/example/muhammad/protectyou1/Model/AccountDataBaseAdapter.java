@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 public class AccountDataBaseAdapter {
-    static final String DATABASE_NAME = "protect_yourself.db";
+    static final String DATABASE_NAME = "protect_yourselftmp12.db";
     static final int DATABASE_VERSION = 1;
     public static final int NAME_COLUMN = 1;
     static final String DATABASE_USERS = "create table users(" +
@@ -42,6 +42,12 @@ public class AccountDataBaseAdapter {
     static final String DATABASE_CURRENT_USER = "create table current_user(" +
                                                     "user_id integer," +
                                                     "date_time text" +
+                                                ");";
+
+    static final String DATABASE_MESSAGES = "create table messages(" +
+                                                    "id integer primary key autoincrement," +
+                                                    "user_id integer," +
+                                                    "message text" +
                                                 ");";
 
     public SQLiteDatabase db;
@@ -186,4 +192,34 @@ public class AccountDataBaseAdapter {
         cursor.close();
         return contacts;
     }
+
+    /**
+     * Predefined Emergency Message
+     */
+    public void insertNewMessageForUser(String msg) {
+        clearCurrentMessage();
+        ContentValues newValues = new ContentValues();
+        newValues.put("user_id", getCurrentUserId());
+        newValues.put("message", msg);
+        db.insert("messages", null, newValues);
+    }
+
+    public String getUserMessage() {
+        Cursor cursor = db.query("messages", null, "user_id=" + getCurrentUserId(),
+                null, null, null, null);
+        if (cursor.getCount() < 1) {
+            cursor.close();
+            return null;
+        }
+        cursor.moveToFirst();
+        String message = cursor.getString(cursor.getColumnIndex("message"));
+        cursor.close();
+        return message;
+    }
+
+    public int clearCurrentMessage() {
+        return db.delete("messages", "user_id=" + getCurrentUserId(), null);
+    }
+
+
 }
