@@ -61,7 +61,7 @@
         android:divider="@color/divider"
         android:padding="10dp"
         android:layout_marginTop="40dp"
-        android:contextClickable="false"
+        android:contextClickable="true"
         tools:listitem="@android:layout/simple_list_item_1"
         android:layout_below="@+id/backBtn"
         android:layout_alignParentLeft="true"

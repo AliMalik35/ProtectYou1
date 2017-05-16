@@ -35,7 +35,7 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
         saveMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accountDataBaseAdapter.insertNewMessageForUser(emergencyMessageEditText.getText().toString());
+                accountDataBaseAdapter.updateMessage(emergencyMessageEditText.getText().toString());
 
                 Toast.makeText(getApplicationContext(),
                         "Message Saved!", Toast.LENGTH_LONG)

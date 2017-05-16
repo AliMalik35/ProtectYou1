@@ -1,8 +1,8 @@
 package com.example.muhammad.protectyou1.EmergencyContacts;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +38,7 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
         addContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            accountDataBaseAdapter.insertContactForCurrentUser(nameTextView.getText().toString(), relationTextView.getText().toString(), phoneTextView.getText().toString());
+            accountDataBaseAdapter.insertContact(nameTextView.getText().toString(), relationTextView.getText().toString(), phoneTextView.getText().toString());
             Toast.makeText(getApplicationContext(), "Contact Added", Toast.LENGTH_SHORT).show();
 
             Intent i = new Intent(AddEmergencyContactActivity.this, ViewEmergencyContactsActivity.class);

@@ -114,6 +114,16 @@ public class AccountDataBaseAdapter {
         return id;
     }
 
+    public boolean usernameExists(String username) {
+        Cursor cursor = db.query("users", null, " username=?",
+                new String[] { username }, null, null, null);
+        if (cursor.getCount() < 1) {
+            cursor.close();
+            return false;
+        }
+        return true;
+    }
+
     public int getCurrentUserId() {
         Cursor cursor = db.query("current_user", null, null,
                 null, null, null, null);
@@ -167,7 +177,7 @@ public class AccountDataBaseAdapter {
      *
      */
 
-    public void insertContactForCurrentUser(String name, String relation, String phone) {
+    public void insertContact(String name, String relation, String phone) {
         ContentValues newValues = new ContentValues();
         newValues.put("user_id", getCurrentUserId());
         newValues.put("name", name);
@@ -176,7 +186,7 @@ public class AccountDataBaseAdapter {
         db.insert("contacts", null, newValues);
     }
 
-    public List<EmergencyContact> getAllContactsForCurrentUser() {
+    public List<EmergencyContact> getAllContacts() {
         Cursor cursor = db.query("contacts", null, "user_id=" + getCurrentUserId(),
                 null, null, null, null);
         if (cursor.getCount() < 1) {
@@ -192,12 +202,16 @@ public class AccountDataBaseAdapter {
         cursor.close();
         return contacts;
     }
+    public int deleteContact(int id) {
+        String where = "username=?";
+        return db.delete("contacts", "user_id=" + getCurrentUserId() + " AND id=" + id, null);
+    }
 
     /**
      * Predefined Emergency Message
      */
-    public void insertNewMessageForUser(String msg) {
-        clearCurrentMessage();
+    public void updateMessage(String msg) {
+        clearMessage();
         ContentValues newValues = new ContentValues();
         newValues.put("user_id", getCurrentUserId());
         newValues.put("message", msg);
@@ -217,7 +231,7 @@ public class AccountDataBaseAdapter {
         return message;
     }
 
-    public int clearCurrentMessage() {
+    public int clearMessage() {
         return db.delete("messages", "user_id=" + getCurrentUserId(), null);
     }
 
