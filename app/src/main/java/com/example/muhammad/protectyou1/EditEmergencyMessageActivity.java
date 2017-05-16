@@ -23,6 +23,10 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
+        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+        }
+
         emergencyMessageEditText = (EditText) findViewById(R.id.emergencyMessageEditText);
         saveMessageBtn = (Button) findViewById(R.id.saveMessageBtn);
         cancelBtn = (Button) findViewById(R.id.cancelBtn);

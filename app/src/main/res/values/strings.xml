@@ -21,4 +21,6 @@
     <string name="protect_your_data">Protect Your Data</string>
     <string name="edit_message">Edit Emergency SMS</string>
     <string name="save_message">Save Message</string>
+    <string name="log_out">Log Out</string>
+    <string name="welcome_text">Welcome to Protect Yourself and Your Data</string>
 </resources>

@@ -166,6 +166,15 @@ public class AccountDataBaseAdapter {
                 new String[] { UserName });
     }
 
+    public boolean userIsLoggedIn() {
+        Cursor cursor = db.query("current_user", null, null, null, null, null, null);
+        if (cursor.getCount() < 1) {
+            cursor.close();
+            return false;
+        }
+        return true;
+    }
+
     public int clearCurrentUser() {
         return db.delete("current_user", null, null);
     }

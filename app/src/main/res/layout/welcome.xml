@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:baselineAligned="false">
 
-    <ImageView
-        android:id="@+id/welcomeImageView"
+    <!--<ImageView-->
+        <!--android:id="@+id/welcomeImageView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@drawable/logo" />-->
+
+    <TextView
+        android:id="@+id/welcomeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo" />
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
+        android:text="@string/welcome_text"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/signInBtn"
