@@ -23,6 +23,10 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
+        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+        }
+
         emergencyMessageEditText = (EditText) findViewById(R.id.emergencyMessageEditText);
         saveMessageBtn = (Button) findViewById(R.id.saveMessageBtn);
         cancelBtn = (Button) findViewById(R.id.cancelBtn);
@@ -35,7 +39,7 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
         saveMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accountDataBaseAdapter.insertNewMessageForUser(emergencyMessageEditText.getText().toString());
+                accountDataBaseAdapter.updateMessage(emergencyMessageEditText.getText().toString());
 
                 Toast.makeText(getApplicationContext(),
                         "Message Saved!", Toast.LENGTH_LONG)

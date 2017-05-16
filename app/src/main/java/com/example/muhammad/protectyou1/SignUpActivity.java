@@ -54,6 +54,11 @@ public class SignUpActivity extends Activity {
                             Toast.LENGTH_LONG).show();
                     return;
                 }
+                if (accountDataBaseAdapter.usernameExists(username)) {
+                    Toast.makeText(getApplicationContext(), "Username taken!",
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (! password.equals(confirmPassword)) {
                     Toast.makeText(getApplicationContext(),
                             "Passwords do not match!", Toast.LENGTH_LONG)

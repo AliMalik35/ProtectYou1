@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.muhammad.protectyou1.EmergencyContacts.ViewEmergencyContactsActivity;
+import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
 
 /**
  * Ashley Menhennett
@@ -14,11 +15,19 @@ import com.example.muhammad.protectyou1.EmergencyContacts.ViewEmergencyContactsA
 public class ProtectionHomeActivity extends AppCompatActivity {
 
     private Button viewContactsBtn, editEmergencySMSMessageBtn, backBtn;
+    private AccountDataBaseAdapter accountDataBaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.protection_home);
+
+        accountDataBaseAdapter = new AccountDataBaseAdapter(this);
+        accountDataBaseAdapter = accountDataBaseAdapter.open();
+
+        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+        }
 
         viewContactsBtn = (Button) findViewById(R.id.viewContactsBtn);
         editEmergencySMSMessageBtn = (Button) findViewById(R.id.editEmergencySMSMessageBtn);
