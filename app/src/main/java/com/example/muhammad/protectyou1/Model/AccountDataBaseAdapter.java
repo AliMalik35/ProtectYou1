@@ -137,6 +137,30 @@ public class AccountDataBaseAdapter {
         return id;
     }
 
+    public String getCurrentUsername() {
+        Cursor cursorA = db.query("current_user", null, null,
+                null, null, null, null);
+        if (cursorA.getCount() < 1) {
+            cursorA.close();
+            return null;
+        }
+        cursorA.moveToFirst();
+        int id = cursorA.getInt(cursorA.getColumnIndex("user_id"));
+
+        Cursor cursorB = db.query("users", null, "id=" + id,
+                null, null, null, null);
+        if (cursorB.getCount() < 1) {
+            cursorB.close();
+            return null;
+        }
+        cursorB.moveToFirst();
+        String username = cursorB.getString(cursorB.getColumnIndex("username"));
+
+        cursorA.close();
+        cursorB.close();
+        return username;
+    }
+
     public String getUserPasswordByUsername(String userName) {
         Cursor cursor = db.query("users", null, " username=?",
                 new String[] { userName }, null, null, null);

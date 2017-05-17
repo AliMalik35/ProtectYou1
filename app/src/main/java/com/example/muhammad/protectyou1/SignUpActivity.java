@@ -21,7 +21,7 @@ import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
 public class SignUpActivity extends Activity {
     private EditText usernameEditText, passwordEditText, confirmPasswordEditText;
     private AccountDataBaseAdapter accountDataBaseAdapter;
-    private Button createAccountBtn;
+    private Button createAccountBtn, cancelBtn;
     private Context context = this;
 
     @Override
@@ -37,6 +37,8 @@ public class SignUpActivity extends Activity {
         confirmPasswordEditText = (EditText) findViewById(R.id.confirmPasswordEditText);
 
         createAccountBtn = (Button) findViewById(R.id.createAccountBtn);
+        cancelBtn = (Button) findViewById(R.id.cancelBtn);
+
         createAccountBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -44,8 +46,6 @@ public class SignUpActivity extends Activity {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 String confirmPassword = confirmPasswordEditText.getText().toString();
-
-                // TODO check username isn't taken
 
                 if (username.equals("") || password.equals("")
                         || confirmPassword.equals("")) {
@@ -64,6 +64,7 @@ public class SignUpActivity extends Activity {
                             "Passwords do not match!", Toast.LENGTH_LONG)
                             .show();
                 } else {
+                    // TODO hash password
                     accountDataBaseAdapter.insertNewUser(username, password);
 
                     Toast.makeText(getApplicationContext(),
@@ -74,6 +75,13 @@ public class SignUpActivity extends Activity {
                     startActivity(i);
                     finish();
                 }
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
             }
         });
     }

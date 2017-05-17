@@ -57,6 +57,7 @@ public class WelcomeActivity extends Activity {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
+                // TODO password should be hashed before checking, given that passwords are hashed in db
                 String storedPassword = accountDataBaseAdapter
                         .getUserPasswordByUsername(username);
 
@@ -69,14 +70,7 @@ public class WelcomeActivity extends Activity {
                     // used to track who current user of application is
                     accountDataBaseAdapter.insertCurrentUser(username);
 
-                    // TODO if user logs out, call clearCurrentUser()
-                    // TODO when app is destroyed, call clearCurrentUser()
-                    // TODO check on each activity if there is a value in current_user table, if there is not a value,
-                    // TODO contd. this signifies that the user is not 'logged in', send user to WelcomeActivity to sign in
-
-
-                    Intent i = new Intent(WelcomeActivity.this, HomeActivity.class);
-                    startActivity(i);
+                    startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
                 } else {
                     Toast.makeText(WelcomeActivity.this,
                             "User Name or Password does not match!",
