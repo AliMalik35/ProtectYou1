@@ -1,8 +1,10 @@
 package com.example.muhammad.protectyou1;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -30,6 +32,8 @@ public class ProtectionHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.protection_home);
+
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
 
         gps = new GPSTracker(this);
 
@@ -89,28 +93,23 @@ public class ProtectionHomeActivity extends AppCompatActivity {
 
         List<EmergencyContact> contacts = accountDataBaseAdapter.getAllContacts();
         if (contacts == null) {
+            Toast.makeText(getApplicationContext(), "No help was requested!\nAdd emergency contacts to fix this!", Toast.LENGTH_LONG).show();
             return false;
         }
 
         int msgCount = sendSMS(contacts, message);
-        if (msgCount < 1) {
-            Toast.makeText(getApplicationContext(),
-                    "No help was requested!", Toast.LENGTH_LONG)
-                    .show();
-        } else {
-            Toast.makeText(getApplicationContext(),
-                    "Help has been requested!\n"+ msgCount +" messages have been sent!", Toast.LENGTH_LONG)
-                    .show();
-        }
+        Toast.makeText(getApplicationContext(),
+                "Help has been requested!\n"+ msgCount +" messages have been sent!", Toast.LENGTH_LONG)
+                .show();
 
         placeCall(contacts.get(0));
 
         return true;
     }
 
-    //TODO crashes on real device
     private int sendSMS(List<EmergencyContact> contacts, String message) {
         int counter = 0;
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
         SmsManager sms = SmsManager.getDefault();
         for (EmergencyContact contact : contacts) {
             if (! contact.getPhone().isEmpty()) {
@@ -123,14 +122,21 @@ public class ProtectionHomeActivity extends AppCompatActivity {
     }
 
     private void placeCall(EmergencyContact contact) {
-        Intent intent = new Intent(Intent.ACTION_CALL);
+//        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CALL_PHONE},1);
+//
+//        Intent intent = new Intent(Intent.ACTION_DIAL);
+//
+//        intent.setData(Uri.parse("tel:" + contact.getPhone()));
+//        try {
+//            startActivity(intent);
+//        } catch (SecurityException e) {
+//            // permission error
+//        }
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
 
         intent.setData(Uri.parse("tel:" + contact.getPhone()));
-        try {
-            startActivity(intent);
-        } catch (SecurityException e) {
-            // permission error
-        }
+        startActivity(intent);
 
 
     }

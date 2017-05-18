@@ -37,6 +37,7 @@ public class GPSTracker extends Service implements LocationListener {
 
     public GPSTracker(Context context) {
         this.mContext = context;
+
         getLocation();
     }
 
@@ -70,7 +71,7 @@ public class GPSTracker extends Service implements LocationListener {
                         }
                     }
                 } catch (SecurityException e) {
-                    // permission denied
+
                 }
 
             }
