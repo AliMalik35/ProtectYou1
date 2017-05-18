@@ -32,8 +32,9 @@ public class ProtectionHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.protection_home);
-
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.CALL_PHONE},1);
 
         gps = new GPSTracker(this);
 
@@ -60,6 +61,8 @@ public class ProtectionHomeActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), EditEmergencyMessageActivity.class));
             }
         });
+
+
 
         protectionTriggerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +112,7 @@ public class ProtectionHomeActivity extends AppCompatActivity {
 
     private int sendSMS(List<EmergencyContact> contacts, String message) {
         int counter = 0;
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
+
         SmsManager sms = SmsManager.getDefault();
         for (EmergencyContact contact : contacts) {
             if (! contact.getPhone().isEmpty()) {
@@ -122,21 +125,15 @@ public class ProtectionHomeActivity extends AppCompatActivity {
     }
 
     private void placeCall(EmergencyContact contact) {
-//        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CALL_PHONE},1);
-//
-//        Intent intent = new Intent(Intent.ACTION_DIAL);
-//
-//        intent.setData(Uri.parse("tel:" + contact.getPhone()));
-//        try {
-//            startActivity(intent);
-//        } catch (SecurityException e) {
-//            // permission error
-//        }
-
-        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Intent intent = new Intent(Intent.ACTION_CALL);
 
         intent.setData(Uri.parse("tel:" + contact.getPhone()));
-        startActivity(intent);
+        try {
+            startActivity(intent);
+        } catch (SecurityException e) {
+            // permission error
+        }
+
 
 
     }
