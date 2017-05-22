@@ -6,22 +6,22 @@
     android:orientation="vertical"
     android:baselineAligned="false">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/welcomeImageView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srcCompat="@drawable/logo" />-->
-
-    <TextView
-        android:id="@+id/welcomeTextView"
+    <ImageView
+        android:id="@+id/welcomeImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:gravity="center_horizontal"
-        android:text="@string/welcome_text"
-        android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textSize="18sp" />
+        android:src="@drawable/logo"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/welcomeTextView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="40dp"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:text="@string/welcome_text"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+        <!--android:textSize="18sp" />-->
 
     <Button
         android:id="@+id/signInBtn"
