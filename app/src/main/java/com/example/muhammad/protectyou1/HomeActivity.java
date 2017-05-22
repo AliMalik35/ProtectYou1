@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private Button protectionBtn, privacyBtn, logOutBtn;
@@ -24,9 +25,11 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
         }
 
+        //startService(new Intent(getApplicationContext(), PowerButtonService.class));
+
         protectionBtn = (Button) findViewById(R.id.protectionBtn);
         privacyBtn = (Button) findViewById(R.id.privacyBtn);
-        logOutBtn = (Button) findViewById(R.id.logOutBtn);
+        //logOutBtn = (Button) findViewById(R.id.logOutBtn);
 
         protectionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,19 +38,19 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        logOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logOut();
-            }
-        });
+//        logOutBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                logOut();
+//            }
+//        });
     }
 
-    private void logOut() {
-        accountDataBaseAdapter = new AccountDataBaseAdapter(this);
-        accountDataBaseAdapter = accountDataBaseAdapter.open();
-
-        accountDataBaseAdapter.clearCurrentUser();
-        startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-    }
+//    private void logOut() {
+//        accountDataBaseAdapter = new AccountDataBaseAdapter(this);
+//        accountDataBaseAdapter = accountDataBaseAdapter.open();
+//
+//        accountDataBaseAdapter.clearCurrentUser();
+//        startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//    }
 }

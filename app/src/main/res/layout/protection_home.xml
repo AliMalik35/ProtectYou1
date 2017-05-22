@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:baselineAligned="false"
     android:weightSum="1"
-    tools:context="com.example.muhammad.protectyou1.ProtectionHomeActivity">
+    tools:context="com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity">
 
     <ImageView
         android:id="@+id/protectionHomeImageView"
@@ -39,6 +39,7 @@
         <!--android:text="@string/trigger_protection_info"-->
         <!--android:textAlignment="center"-->
         <!--android:gravity="center"-->
+        <!--android:layout_above="@+id/emergencyFeaturesTextView"-->
         <!--android:layout_alignParentRight="true"-->
         <!--android:layout_alignParentEnd="true" />-->
 

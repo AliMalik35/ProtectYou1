@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1.Model;
+package com.example.muhammad.protectyou1.DataAccess;
 
 /**
  * Created by Muhammad on 18/04/2017.
@@ -10,7 +10,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.muhammad.protectyou1.EmergencyContacts.EmergencyContact;
+import com.example.muhammad.protectyou1.Models.EmergencyContact;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 public class AccountDataBaseAdapter {
-    static final String DATABASE_NAME = "protect_yourselftmp12.db";
+    static final String DATABASE_NAME = "protect_yourselftmp1234.db";
     static final int DATABASE_VERSION = 1;
     public static final int NAME_COLUMN = 1;
     static final String DATABASE_USERS = "create table users(" +
@@ -80,7 +80,6 @@ public class AccountDataBaseAdapter {
      */
 
     public void insertNewUser(String userName, String password) {
-        insertCurrentUser(userName);
         ContentValues newValues = new ContentValues();
         newValues.put("username", userName);
         newValues.put("password", password);

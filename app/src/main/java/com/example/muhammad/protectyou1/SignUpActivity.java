@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 
 /**
  * Registers a user

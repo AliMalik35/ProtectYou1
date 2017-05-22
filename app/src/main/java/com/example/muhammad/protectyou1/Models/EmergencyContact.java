@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1.EmergencyContacts;
+package com.example.muhammad.protectyou1.Models;
 
 /**
  * Created by ashleymenhennett on 10/5/17.

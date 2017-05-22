@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 
 /**
  * Allows user to go to sign up activity or invoke login dialog
@@ -29,6 +29,10 @@ public class WelcomeActivity extends Activity {
 
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
+
+        if (accountDataBaseAdapter.userIsLoggedIn()) {
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        }
 
         signUpBtn = (Button) findViewById(R.id.signUpBtn);
 

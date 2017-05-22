@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1;
+package com.example.muhammad.protectyou1.Protect;
 
 import android.Manifest;
 import android.content.Intent;
@@ -11,9 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.muhammad.protectyou1.EmergencyContacts.EmergencyContact;
-import com.example.muhammad.protectyou1.EmergencyContacts.ViewEmergencyContactsActivity;
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.HomeActivity;
+import com.example.muhammad.protectyou1.Models.EmergencyContact;
+import com.example.muhammad.protectyou1.R;
+import com.example.muhammad.protectyou1.WelcomeActivity;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class ProtectionHomeActivity extends AppCompatActivity {
     private AccountDataBaseAdapter accountDataBaseAdapter;
     private GPSTracker gps;
 
-    private boolean DEBUG = true;
+    private boolean DEBUG = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +63,6 @@ public class ProtectionHomeActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), EditEmergencyMessageActivity.class));
             }
         });
-
-
 
         protectionTriggerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +102,7 @@ public class ProtectionHomeActivity extends AppCompatActivity {
 
         int msgCount = sendSMS(contacts, message);
         Toast.makeText(getApplicationContext(),
-                "Help has been requested!\n"+ msgCount +" messages have been sent!", Toast.LENGTH_LONG)
+                "Help has been requested!\n"+ msgCount +" message(s) have been sent!", Toast.LENGTH_SHORT)
                 .show();
 
         placeCall(contacts.get(0));
@@ -126,15 +126,12 @@ public class ProtectionHomeActivity extends AppCompatActivity {
 
     private void placeCall(EmergencyContact contact) {
         Intent intent = new Intent(Intent.ACTION_CALL);
-
         intent.setData(Uri.parse("tel:" + contact.getPhone()));
         try {
             startActivity(intent);
         } catch (SecurityException e) {
             // permission error
         }
-
-
-
     }
+
 }

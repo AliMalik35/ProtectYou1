@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1.EmergencyContacts;
+package com.example.muhammad.protectyou1.Protect;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
-import com.example.muhammad.protectyou1.ProtectionHomeActivity;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.Models.EmergencyContact;
 import com.example.muhammad.protectyou1.R;
 import com.example.muhammad.protectyou1.WelcomeActivity;
 

@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.PREVENT_POWER_KEY" />
 
     <application
         android:allowBackup="true"
@@ -37,11 +38,11 @@
             android:name=".SignUpActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-        <activity android:name=".ProtectionHomeActivity" />
-        <activity android:name=".EmergencyContacts.ViewEmergencyContactsActivity" />
-        <activity android:name=".EmergencyContacts.AddEmergencyContactActivity" />
+        <activity android:name=".Protect.ProtectionHomeActivity" />
+        <activity android:name=".Protect.ViewEmergencyContactsActivity" />
+        <activity android:name=".Protect.AddEmergencyContactActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".EditEmergencyMessageActivity" />
+        <activity android:name=".Protect.EditEmergencyMessageActivity" />
 
     </application>
 
