@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 import com.example.muhammad.protectyou1.R;
-import com.example.muhammad.protectyou1.WelcomeActivity;
 
 public class EditEmergencyMessageActivity extends AppCompatActivity {
     private AccountDataBaseAdapter accountDataBaseAdapter;
@@ -25,9 +24,9 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-        }
+//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//        }
 
         emergencyMessageEditText = (EditText) findViewById(R.id.emergencyMessageEditText);
         saveMessageBtn = (Button) findViewById(R.id.saveMessageBtn);
@@ -58,5 +57,11 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataBaseAdapter.close();
     }
 }

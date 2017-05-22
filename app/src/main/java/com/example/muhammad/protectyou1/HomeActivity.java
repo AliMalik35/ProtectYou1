@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.Privacy.PrivacyHomeActivity;
 import com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity;
 
 public class HomeActivity extends AppCompatActivity {
@@ -21,9 +22,9 @@ public class HomeActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-        }
+//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//        }
 
         //startService(new Intent(getApplicationContext(), PowerButtonService.class));
 
@@ -35,6 +36,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ProtectionHomeActivity.class));
+            }
+        });
+
+        privacyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PrivacyHomeActivity.class));
             }
         });
 
@@ -53,4 +61,10 @@ public class HomeActivity extends AppCompatActivity {
 //        accountDataBaseAdapter.clearCurrentUser();
 //        startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
 //    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataBaseAdapter.close();
+    }
 }

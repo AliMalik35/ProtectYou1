@@ -15,7 +15,6 @@ import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 import com.example.muhammad.protectyou1.HomeActivity;
 import com.example.muhammad.protectyou1.Models.EmergencyContact;
 import com.example.muhammad.protectyou1.R;
-import com.example.muhammad.protectyou1.WelcomeActivity;
 
 import java.util.List;
 
@@ -43,9 +42,9 @@ public class ProtectionHomeActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-        }
+//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//        }
 
         viewContactsBtn = (Button) findViewById(R.id.viewContactsBtn);
         editEmergencySMSMessageBtn = (Button) findViewById(R.id.editEmergencySMSMessageBtn);
@@ -132,6 +131,12 @@ public class ProtectionHomeActivity extends AppCompatActivity {
         } catch (SecurityException e) {
             // permission error
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataBaseAdapter.close();
     }
 
 }

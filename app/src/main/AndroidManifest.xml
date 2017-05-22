@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.PREVENT_POWER_KEY" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -43,7 +44,8 @@
         <activity android:name=".Protect.AddEmergencyContactActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".Protect.EditEmergencyMessageActivity" />
-
+        <activity android:name=".Privacy.PrivacyHomeActivity" />
+        <activity android:name=".Privacy.DeleteImageFilesActivity"></activity>
     </application>
 
 </manifest>

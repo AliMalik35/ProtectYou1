@@ -16,7 +16,6 @@ import android.widget.ListView;
 import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 import com.example.muhammad.protectyou1.Models.EmergencyContact;
 import com.example.muhammad.protectyou1.R;
-import com.example.muhammad.protectyou1.WelcomeActivity;
 
 import java.util.List;
 
@@ -42,9 +41,9 @@ public class ViewEmergencyContactsActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-        }
+//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//        }
 
         addContactsBtn = (Button) findViewById(R.id.addContactsBtn);
         backBtn = (Button) findViewById(R.id.backBtn);
@@ -101,5 +100,11 @@ public class ViewEmergencyContactsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataBaseAdapter.close();
     }
 }
