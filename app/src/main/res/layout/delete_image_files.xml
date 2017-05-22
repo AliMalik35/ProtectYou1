@@ -7,10 +7,10 @@
     android:orientation="vertical"
     android:baselineAligned="false"
     android:weightSum="1"
-    tools:context="com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity">
+    tools:context="com.example.muhammad.protectyou1.Privacy.PrivacyHomeActivity">
 
     <ImageView
-        android:id="@+id/contactsImageView"
+        android:id="@+id/imageFilesImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
@@ -19,12 +19,12 @@
         android:layout_marginTop="0dp" />
 
     <TextView
-        android:id="@+id/emergencyContactsTextView"
+        android:id="@+id/imageFilesTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.06"
         android:gravity="center"
-        android:text="@string/emergency_contacts"
+        android:text="@string/delete_image_files"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_alignParentTop="true"
@@ -33,25 +33,13 @@
         android:layout_marginTop="20dp" />
 
     <Button
-        android:id="@+id/addContactsBtn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="@string/add_contacts"
-        android:layout_below="@+id/contactsImageView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
         android:id="@+id/backBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="8dp"
         android:text="@string/back"
-        android:layout_alignBottom="@+id/contactsImageView"
+        android:layout_alignBottom="@+id/imageFilesImageView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="90dp"/>
@@ -59,7 +47,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="370dp"
-        android:id="@+id/contactsListView"
+        android:id="@+id/imageFilesListView"
         android:choiceMode="none"
         android:fadeScrollbars="false"
         android:background="@color/white"
@@ -68,7 +56,7 @@
         android:dividerHeight="1sp"
         android:divider="@color/divider"
         android:padding="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:contextClickable="true"
         tools:listitem="@android:layout/simple_list_item_1"
         android:layout_below="@+id/backBtn"

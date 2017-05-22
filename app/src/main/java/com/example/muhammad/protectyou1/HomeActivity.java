@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.Privacy.PrivacyHomeActivity;
+import com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private Button protectionBtn, privacyBtn, logOutBtn;
@@ -20,13 +22,15 @@ public class HomeActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-        }
+//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//        }
+
+        //startService(new Intent(getApplicationContext(), PowerButtonService.class));
 
         protectionBtn = (Button) findViewById(R.id.protectionBtn);
         privacyBtn = (Button) findViewById(R.id.privacyBtn);
-        logOutBtn = (Button) findViewById(R.id.logOutBtn);
+        //logOutBtn = (Button) findViewById(R.id.logOutBtn);
 
         protectionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,19 +39,32 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        logOutBtn.setOnClickListener(new View.OnClickListener() {
+        privacyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                logOut();
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PrivacyHomeActivity.class));
             }
         });
+
+//        logOutBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                logOut();
+//            }
+//        });
     }
 
-    private void logOut() {
-        accountDataBaseAdapter = new AccountDataBaseAdapter(this);
-        accountDataBaseAdapter = accountDataBaseAdapter.open();
+//    private void logOut() {
+//        accountDataBaseAdapter = new AccountDataBaseAdapter(this);
+//        accountDataBaseAdapter = accountDataBaseAdapter.open();
+//
+//        accountDataBaseAdapter.clearCurrentUser();
+//        startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//    }
 
-        accountDataBaseAdapter.clearCurrentUser();
-        startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataBaseAdapter.close();
     }
 }

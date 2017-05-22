@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1.EmergencyContacts;
+package com.example.muhammad.protectyou1.Protect;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 import com.example.muhammad.protectyou1.R;
-import com.example.muhammad.protectyou1.WelcomeActivity;
 
 /**
  * Ashley Menhennett
@@ -36,9 +35,9 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-        }
+//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//        }
 
         addContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,5 +58,11 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataBaseAdapter.close();
     }
 }

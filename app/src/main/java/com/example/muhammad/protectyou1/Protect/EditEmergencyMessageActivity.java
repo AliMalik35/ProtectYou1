@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1;
+package com.example.muhammad.protectyou1.Protect;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.muhammad.protectyou1.Model.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
+import com.example.muhammad.protectyou1.R;
 
 public class EditEmergencyMessageActivity extends AppCompatActivity {
     private AccountDataBaseAdapter accountDataBaseAdapter;
@@ -23,9 +24,9 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-        }
+//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
+//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+//        }
 
         emergencyMessageEditText = (EditText) findViewById(R.id.emergencyMessageEditText);
         saveMessageBtn = (Button) findViewById(R.id.saveMessageBtn);
@@ -56,5 +57,11 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        accountDataBaseAdapter.close();
     }
 }

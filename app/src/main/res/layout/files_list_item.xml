@@ -7,17 +7,18 @@
     android:orientation="vertical"
     android:baselineAligned="false"
     android:weightSum="1">
-    tools:context="com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity">
+    tools:context="com.example.muhammad.protectyou1.Privacy.PrivacyHomeActivity">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" "
-        android:id="@+id/emergencyContactTextView"
+        android:id="@+id/fileTextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        android:padding="12dp" />
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1.Model;
+package com.example.muhammad.protectyou1.DataAccess;
 
 /**
  * Created by Muhammad on 18/04/2017.
