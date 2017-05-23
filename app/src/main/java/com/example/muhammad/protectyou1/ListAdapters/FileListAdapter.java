@@ -13,7 +13,11 @@ import java.util.ArrayList;
 
 
 /**
- * Ashley Menhennett
+ * Ashley Menhennett <ashleymenhennett@gmail.com>
+ */
+
+/**
+ * ArrayAdapter for ArrayList<File>
  */
 public class FileListAdapter extends ArrayAdapter<File> {
 

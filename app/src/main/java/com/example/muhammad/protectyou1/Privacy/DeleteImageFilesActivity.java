@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.muhammad.protectyou1.R;
@@ -19,13 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.os.Environment.getExternalStoragePublicDirectory;
-
+/**
+ * Ashley Menhennett <ashleymenhennett@gmail.com>
+ */
+/**
+ * Allows users to deleted selected files from a ListView.
+ */
 public class DeleteImageFilesActivity extends AppCompatActivity {
     private ListView imageFilesListView;
     private Button backBtn;
+    private TextView noFilesTextView;
     private ArrayAdapter<File> adapter;
     private List<File> files;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +39,20 @@ public class DeleteImageFilesActivity extends AppCompatActivity {
         setContentView(R.layout.delete_image_files);
 
         imageFilesListView = (ListView) findViewById(R.id.imageFilesListView);
+        noFilesTextView = (TextView) findViewById(R.id.noFilesTextView);
+        backBtn = (Button) findViewById(R.id.backBtn);
 
         files = getListFiles(getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM));
 
-        if (files != null) {
+        if (! files.isEmpty()) {
             adapter = new ArrayAdapter<File>(this, R.layout.files_list_item, R.id.fileTextView, files);
             imageFilesListView.setChoiceMode(AbsListView.CHOICE_MODE_NONE);
             imageFilesListView.setAdapter(adapter);
+        } else {
+            noFilesTextView.setText("There are no image files to delete..");
+            imageFilesListView.setVisibility(View.INVISIBLE);
         }
 
-        backBtn = (Button) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +77,12 @@ public class DeleteImageFilesActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Recursively get all image files, starting at dir
+     *
+     * @param  dir - the root directory
+     * @return List<File>
+     */
     private List<File> getListFiles(File dir) {
         ArrayList<File> inFiles = new ArrayList<File>();
         File[] files = dir.listFiles();
@@ -76,7 +92,8 @@ public class DeleteImageFilesActivity extends AppCompatActivity {
             } else {
                 if(file.getName().endsWith(".jpg") ||
                         file.getName().endsWith(".jpeg") ||
-                        file.getName().endsWith(".png")){
+                        file.getName().endsWith(".png") ||
+                        file.getName().endsWith(".gif")){
                     inFiles.add(file);
                 }
             }
@@ -84,9 +101,19 @@ public class DeleteImageFilesActivity extends AppCompatActivity {
         return inFiles;
     }
 
+    /**
+     * Deletes a file and removes it from the ArrayList
+     *
+     * @param position
+     * @return boolean
+     */
     private boolean deleteFile(int position) {
         File file = files.get(position);
         files.remove(position);
+        if (files.isEmpty()) {
+            noFilesTextView.setText("There are no image files to delete..");
+            imageFilesListView.setVisibility(View.INVISIBLE);
+        }
         adapter.notifyDataSetChanged();
         return file.delete();
     }

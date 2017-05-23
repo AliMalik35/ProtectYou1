@@ -13,7 +13,10 @@ import java.util.ArrayList;
 
 
 /**
- * Ashley Menhennett
+ * Ashley Menhennett <ashleymenhennett@gmail.com>
+ */
+/**
+ * List Adapter for an ArratList<EmergencyContact>
  */
 public class EmergencyContactsListAdapter extends ArrayAdapter<EmergencyContact> {
 

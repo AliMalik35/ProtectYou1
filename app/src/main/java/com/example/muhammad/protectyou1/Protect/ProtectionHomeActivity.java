@@ -19,7 +19,7 @@ import com.example.muhammad.protectyou1.R;
 import java.util.List;
 
 /**
- * Ashley Menhennett
+ * Ashley Menhennett <ashleymenhennett@gmail.com>
  */
 public class ProtectionHomeActivity extends AppCompatActivity {
 
@@ -33,6 +33,8 @@ public class ProtectionHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.protection_home);
+
+        // request permissions
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.SEND_SMS,
                 Manifest.permission.CALL_PHONE},1);
@@ -41,10 +43,6 @@ public class ProtectionHomeActivity extends AppCompatActivity {
 
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
-
-//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-//        }
 
         viewContactsBtn = (Button) findViewById(R.id.viewContactsBtn);
         editEmergencySMSMessageBtn = (Button) findViewById(R.id.editEmergencySMSMessageBtn);
@@ -109,6 +107,13 @@ public class ProtectionHomeActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Sends an SMS to all contacts.
+     *
+     * @param contacts
+     * @param message
+     * @return int
+     */
     private int sendSMS(List<EmergencyContact> contacts, String message) {
         int counter = 0;
 
@@ -123,6 +128,11 @@ public class ProtectionHomeActivity extends AppCompatActivity {
         return counter;
     }
 
+    /**
+     * Initiates a phone call to contact.
+     *
+     * @param contact
+     */
     private void placeCall(EmergencyContact contact) {
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:" + contact.getPhone()));

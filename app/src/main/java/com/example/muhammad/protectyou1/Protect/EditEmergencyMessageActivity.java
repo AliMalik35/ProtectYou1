@@ -11,6 +11,9 @@ import android.widget.Toast;
 import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 import com.example.muhammad.protectyou1.R;
 
+/**
+ * Ashley Menhennett and Ali
+ */
 public class EditEmergencyMessageActivity extends AppCompatActivity {
     private AccountDataBaseAdapter accountDataBaseAdapter;
     private EditText emergencyMessageEditText;
@@ -23,10 +26,6 @@ public class EditEmergencyMessageActivity extends AppCompatActivity {
 
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
-
-//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-//        }
 
         emergencyMessageEditText = (EditText) findViewById(R.id.emergencyMessageEditText);
         saveMessageBtn = (Button) findViewById(R.id.saveMessageBtn);

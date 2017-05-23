@@ -18,7 +18,7 @@ import java.util.List;
 
 
 /**
- * Used to obtain user account information
+ * User account database access
  */
 
 public class AccountDataBaseAdapter {
