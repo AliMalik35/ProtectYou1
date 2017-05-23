@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 import com.example.muhammad.protectyou1.Privacy.PrivacyHomeActivity;
-import com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity;
+import com.example.muhammad.protectyou1.Protection.ProtectionHomeActivity;
 /**
  * Ashley Menhennett <ashleymenhennett@gmail.com>, original by Ali, has been recreated since
  */
