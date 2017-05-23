@@ -39,11 +39,11 @@
             android:name=".SignUpActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-        <activity android:name=".Protect.ProtectionHomeActivity" />
-        <activity android:name=".Protect.ViewEmergencyContactsActivity" />
-        <activity android:name=".Protect.AddEmergencyContactActivity" />
+        <activity android:name=".Protection.ProtectionHomeActivity" />
+        <activity android:name=".Protection.ViewEmergencyContactsActivity" />
+        <activity android:name=".Protection.AddEmergencyContactActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".Protect.EditEmergencyMessageActivity" />
+        <activity android:name=".Protection.EditEmergencyMessageActivity" />
         <activity android:name=".Privacy.PrivacyHomeActivity" />
         <activity android:name=".Privacy.DeleteImageFilesActivity"></activity>
     </application>

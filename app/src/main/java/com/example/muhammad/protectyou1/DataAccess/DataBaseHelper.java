@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * Assists in connecting to SQLite in app database.
+ */
 public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(Context context, String name, CursorFactory factory,
                           int version) {

@@ -1,4 +1,4 @@
-package com.example.muhammad.protectyou1.Protect;
+package com.example.muhammad.protectyou1.Protection;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,12 @@ import com.example.muhammad.protectyou1.DataAccess.AccountDataBaseAdapter;
 import com.example.muhammad.protectyou1.R;
 
 /**
- * Ashley Menhennett
+ * Ashley Menhennett <ashleymenhennett@gmail.com>
  */
 
+/**
+ * Allows user to edit their emergency message.
+ */
 public class AddEmergencyContactActivity extends AppCompatActivity {
     private AccountDataBaseAdapter accountDataBaseAdapter;
     private EditText nameTextView, relationTextView, phoneTextView;
@@ -35,26 +38,20 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
         accountDataBaseAdapter = new AccountDataBaseAdapter(this);
         accountDataBaseAdapter = accountDataBaseAdapter.open();
 
-//        if (! accountDataBaseAdapter.userIsLoggedIn()) {
-//            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-//        }
-
         addContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             accountDataBaseAdapter.insertContact(nameTextView.getText().toString(), relationTextView.getText().toString(), phoneTextView.getText().toString());
             Toast.makeText(getApplicationContext(), "Contact Added", Toast.LENGTH_SHORT).show();
 
-            Intent i = new Intent(AddEmergencyContactActivity.this, ViewEmergencyContactsActivity.class);
-            startActivity(i);
+            startActivity(new Intent(AddEmergencyContactActivity.this, ViewEmergencyContactsActivity.class));
             }
         });
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent i = new Intent(AddEmergencyContactActivity.this, ViewEmergencyContactsActivity.class);
-            startActivity(i);
+            startActivity(new Intent(AddEmergencyContactActivity.this, ViewEmergencyContactsActivity.class));
             }
         });
 

@@ -1,7 +1,7 @@
-package com.example.muhammad.protectyou1.Protect;
+package com.example.muhammad.protectyou1.Protection;
 
 /**
- * Created by ashleymenhennett on 17/5/17.
+ *  Ali and Ashley Menhennett <ashleymenhennett@gmail.com>
  */
 
 import android.app.Service;
@@ -13,6 +13,9 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 
+/**
+ * Used to retrieve GPS location of user from network or GPS
+ */
 public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
@@ -28,10 +31,10 @@ public class GPSTracker extends Service implements LocationListener {
     double longitude;
 
     // The minimum distance to change Updates in meters
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; // in meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1;
 
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 2000; // in milliseconds
+    private static final long MIN_TIME_BW_UPDATES = 2000;
 
     protected LocationManager locationManager;
 
@@ -41,6 +44,11 @@ public class GPSTracker extends Service implements LocationListener {
         getLocation();
     }
 
+    /**
+     * Gets user's current Location
+     *
+     * @return Location
+     */
     public Location getLocation() {
 
         try {
@@ -71,7 +79,7 @@ public class GPSTracker extends Service implements LocationListener {
                         }
                     }
                 } catch (SecurityException e) {
-
+                    // permission denied
                 }
 
             }
@@ -106,9 +114,7 @@ public class GPSTracker extends Service implements LocationListener {
     }
 
     /**
-     *
      * Stop using GPS listener
-     *
      */
     public void stopUsingGPS() {
         if (locationManager != null) {
@@ -116,6 +122,11 @@ public class GPSTracker extends Service implements LocationListener {
         }
     }
 
+    /**
+     * Gets current latitude
+     *
+     * @return double
+     */
     public double getLatitude() {
         if (location != null) {
             latitude = location.getLatitude();
@@ -124,6 +135,11 @@ public class GPSTracker extends Service implements LocationListener {
         return latitude;
     }
 
+    /**
+     * Gets current longitude
+     *
+     * @return double
+     */
     public double getLongitude() {
         if (location != null) {
             longitude = location.getLongitude();
@@ -132,6 +148,11 @@ public class GPSTracker extends Service implements LocationListener {
         return longitude;
     }
 
+    /**
+     * Returns true if the current location can be retrieved.
+     *
+     * @return boolean
+     */
     public boolean canGetLocation() {
         return this.canGetLocation;
     }

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:baselineAligned="false"
     android:weightSum="1"
-    tools:context="com.example.muhammad.protectyou1.Protect.ProtectionHomeActivity">
+    tools:context="com.example.muhammad.protectyou1.Protection.ProtectionHomeActivity">
 
     <ImageView
         android:id="@+id/protectionHomeImageView"

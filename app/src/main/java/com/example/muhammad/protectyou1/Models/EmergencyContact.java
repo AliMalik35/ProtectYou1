@@ -1,9 +1,12 @@
 package com.example.muhammad.protectyou1.Models;
 
 /**
- * Created by ashleymenhennett on 10/5/17.
+ * Ashley Menhennett <ashleymenhennett@gmail.com>
  */
 
+/**
+ * Emergency POJO (DTO)
+ */
 public class EmergencyContact {
 
     private int id;
