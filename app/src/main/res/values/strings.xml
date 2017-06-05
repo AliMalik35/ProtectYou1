@@ -25,7 +25,7 @@
     <string name="welcome_text">Welcome to Protect Yourself and Your Data</string>
     <string name="trigger_protection">PROTECT ME NOW!</string>
     <string name="trigger_protection_info">Pressing this button will send your message, location and bring up the phone activity with your first contact\'s number pre-entered.</string>
-    <string name="delete_dcim_files">DELETE DCIM IMAGES!</string>
+    <string name="delete_dcim_files">Select Files To Protect!</string>
     <string name="delete_image_files">Delete Image Files</string>
 
 </resources>

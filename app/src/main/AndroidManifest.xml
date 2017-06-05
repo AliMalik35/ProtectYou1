@@ -45,7 +45,6 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".Protection.EditEmergencyMessageActivity" />
         <activity android:name=".Privacy.PrivacyHomeActivity" />
-        <activity android:name=".Privacy.DeleteImageFilesActivity"></activity>
     </application>
 
 </manifest>

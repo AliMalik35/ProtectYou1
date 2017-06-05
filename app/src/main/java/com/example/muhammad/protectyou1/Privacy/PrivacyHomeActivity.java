@@ -7,6 +7,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.content.pm.PackageManager;
+import android.content.Context;
 
 import com.example.muhammad.protectyou1.HomeActivity;
 import com.example.muhammad.protectyou1.R;
@@ -19,22 +21,27 @@ import com.example.muhammad.protectyou1.R;
  */
 public class PrivacyHomeActivity extends AppCompatActivity {
     private Button deleteDCIMImagesBtn, backBtn;
+    Context context =this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.privacy_home);
-
-        // reqeust permissions for user to delete images in DeleteImageFilesActivity
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-
+        
         deleteDCIMImagesBtn = (Button) findViewById(R.id.deleteDCIMImagesBtn);
         backBtn = (Button) findViewById(R.id.backBtn);
 
+
         deleteDCIMImagesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), DeleteImageFilesActivity.class));
+            public void onClick(View v) {
+                PackageManager pm = context.getPackageManager();
+                Intent appStartIntent = pm.getLaunchIntentForPackage("com.znp.folder.file.locker");
+                if (null != appStartIntent) {
+                    context.startActivity(appStartIntent);
+                }
+
+
             }
         });
 
